@@ -7,7 +7,7 @@ import { Directive, Renderer2 , OnInit, ElementRef, HostBinding,HostListener} fr
 export class CustomInputDirective implements OnInit {
 
   noOfDigits=4;
-  maxValue=1000;
+  maxValue=5000;
 
   constructor(private userValue: ElementRef) {
 
@@ -19,10 +19,20 @@ export class CustomInputDirective implements OnInit {
     }
     @HostListener('keyup') onInput(){
 
-      if (this.userValue.nativeElement.value.toString().length >= this.noOfDigits){
-        this.userValue.nativeElement.disabled = true;
-      }
-      if(this.userValue.nativeElement.value > this.maxValue){
+         // alternate code
+      // this.userValue.nativeElement.value %= Math.pow(10,this.noOfDigits)
+      //
+      //
+      // if (this.userValue.nativeElement.value > this.maxValue)
+      // {
+      //   this.userValue.nativeElement.value = this.maxValue;
+      // }
+
+
+
+
+      if (this.userValue.nativeElement.value.toString().length >= this.noOfDigits || this.userValue.nativeElement.value > this.maxValue)
+      {
         this.userValue.nativeElement.value = this.maxValue;
       }
 
