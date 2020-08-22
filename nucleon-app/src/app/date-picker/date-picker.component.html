@@ -1,0 +1,27 @@
+<h1>Custom Date Picker </h1>
+<div class="date-picker" >
+   <!-- the div is set to active for user to select a value -->
+  <div class="selected-date" (click)="active=true;">{{selectedDate}}</div>
+  <div *ngIf="active" class="dates">
+     <!-- month selector -->
+    <div class="select">
+      <div class="arrows" (click)="goToPrevMonth()">&lt;</div>
+      <div class="value">{{months[month]}}</div>
+      <div class="arrows" (click)="goToNextMonth()">&gt;</div>
+    </div>
+      <!-- year selector -->
+    <div class="select">
+      <div class="arrows" (click)="goToPrevYear()">&lt;</div>
+      <div class="value">{{year}}</div>
+      <div class="arrows" (click)="goToNextYear()">&gt;</div>
+    </div>
+    <!-- displaying no of days in month -->
+    <div class="days">
+      <div class="day" *ngFor="let i of no_of_days" [ngStyle]="{'background':selected(i+1)}" (click)="updated(i+1)">{{i+1}}</div>
+    </div>
+    <div class="done" (click)="active=false;">
+      <p>Done</p>
+    </div>
+
+  </div>
+</div>
