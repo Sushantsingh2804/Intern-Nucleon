@@ -15,7 +15,7 @@ h1{
 .date-picker{
   position: relative;
   width: 100%;
-  max-width: 30vw;
+  max-width: 20vw;
   height: 60px;
   background-color: #fff;
   margin: 30px auto;
@@ -58,13 +58,7 @@ h1{
   align-items: center;
   border-bottom: 2px solid #eee;
 }
-.done{
-  text-align: center;
-  font-size: 1.3rem;
-  border-bottom: 2px solid #eee;
-  border-top: 2px solid #eee;
 
-}
 .arrows{
   width:35px;
   height: 35px;
@@ -84,13 +78,7 @@ h1{
   background-color: #00ca85;
 }
 
-.done:hover{
-  background-color: #f3f3f3;
-}
 
-.done:active{
-  background-color: #00ca85;
-}
 
 
 .days{

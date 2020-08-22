@@ -53,6 +53,15 @@ export class DatePickerComponent implements OnInit {
       }
       this.getDate();
   }
+  // toggles the date div
+  toggleDatePicker(){
+    if(!this.active){
+      this.active=true;
+    }
+    else{
+      this.active=false;
+    }
+  }
 
   // updates year
   goToNextYear(){
