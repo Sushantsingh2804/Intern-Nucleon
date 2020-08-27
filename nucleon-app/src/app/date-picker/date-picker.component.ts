@@ -14,6 +14,8 @@ export class DatePickerComponent implements OnInit {
   day = this.date.getDate();
   month = this.date.getMonth();
   year= this.date.getFullYear();
+  minute=this.date.getMinutes()
+  hour=this.date.getHours()
 //selected date is the date selected value it is initialised to current date
   selectedDate = this.formatDate(this.date); //format date is used to format date
   no_of_days=Array.from(Array(31).keys()); // creating a array of 31 numbers for days in month
@@ -74,9 +76,53 @@ export class DatePickerComponent implements OnInit {
     this.getDate();
 
   }
+
+  //update hour
+  addHour(){
+    this.hour++;
+    if(this.hour>23){
+      this.hour=0;
+    }
+    this.getDate();
+
+  }
+  subHour(){
+    this.hour--;
+    if(this.hour<0){
+      this.hour=23;
+    }
+    this.getDate();
+
+  }
+  //update min
+  addMin(){
+    this.minute++;
+    if(this.minute>59){
+      this.minute=0;
+      this.hour++;
+      if(this.hour>23){
+        this.hour=0;
+      }
+    }
+    this.getDate();
+
+  }
+  subMin(){
+    this.minute--;
+    if(this.minute<0){
+      this.minute=59;
+      this.hour--;
+      if(this.hour<0){
+        this.hour=23;
+      }
+    }
+    this.getDate();
+
+  }
+
   // updates the selected date to the user selected value
   updated(i){
-    let newDate=new Date(this.year + '-' + (this.month+1) + '-' + (i));
+    let newDate=new Date(this.year ,(this.month+1) , (i) ,this.hour,this.minute);
     this.selectedDate = this.formatDate(newDate);
     this.day=i;
     console.log(this.selectedDate);
@@ -101,10 +147,19 @@ export class DatePickerComponent implements OnInit {
       month = '0'+ month;
     }
 
+    let min = d.getMinutes();
+    if (min<10){
+      min = '0'+ min;
+    }
+
+    let hr = d.getHours();
+    if (hr<10){
+      hr = '0'+ hr;
+    }
 
     let year = d.getFullYear();
 
-    return day + '/' + month + '/' + year;
+    return hr + ":" + min +  "  |  " + day + '/' + month + '/' + year ;
   }
 //calculates and return number of days in a month
 getDate(){
